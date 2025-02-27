@@ -35,9 +35,10 @@ function logout() {
         <div class="flex ">
             <Button v-for="item in items" :key="item.label" :label="item.label" :icon="item.icon" as="router-link" :to="item.path" class="text-[12px] bg-black  sm:text-lg lg:text-xl 2xl:text-2xl  sm:ml-6 2xl:ml-8 relative hover:scale-110 duration-300 after:bg-white after:absolute after:h-0.5 after:w-0 after:bottom-0 after:left-0 hover:after:w-full after:transition-all after:duration-300 cursor-pointer transition-all"></Button>
         </div>
-        <div class="flex items-center">
-            <!-- <Button label="Оплата" as="router-link" to="/payment" class="text-white h-10 bg-zinc py-2 px-5 hover:bg-white  hover:text-black duration-300 transition-all hover:scale-105" ></Button> -->
-            <Button label="Выйти" class="text-white h-10 bg-zinc py-2 px-2 sm:px-5 text-[12px] sm:text-lg hover:bg-white  hover:text-black duration-300 transition-all hover:scale-105" @click="logout"></Button>
+        <div class="flex items-center gap-5">
+            <router-link to="/payment" class="text-white h-10 bg-blue-600 py-2 px-5 hover:bg-blue-500 hover:text-white duration-300 transition-all hover:scale-105">Оплата</router-link>
+            <router-link to="/profile" class="text-white h-10 bg-green-600 py-2 px-2 sm:px-5 text-[12px] rounded-lg sm:text-lg hover:bg-green-500 hover:text-black duration-300 transition-all hover:scale-105">Профиль</router-link>
+            <Button label="Выйти" class="text-white h-10 bg-red-600 py-2 px-2 sm:px-5 text-[12px] sm:text-lg hover:bg-red-500 hover:text-white duration-300 transition-all hover:scale-105" @click="logout"></Button>
         </div>
     </div>
 </template>

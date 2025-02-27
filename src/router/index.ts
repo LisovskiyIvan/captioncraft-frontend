@@ -1,51 +1,65 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Home from '../views/HomeView.vue'
-import Login from '../views/LoginView.vue'
-import Register from '../views/RegisterView.vue'
-import Services from '../views/ServicesView.vue'
-import Contact from '../views/ContactView.vue'
-import GenerateBuild from '../views/GenerateBuildView.vue'
-import GenerateAdd from '../views/GenerateAddView.vue'
-import Payment from '../views/PaymentView.vue'
+import HomeView from '../views/HomeView.vue'
+import LoginView from '../views/LoginView.vue'
+import RegisterView from '../views/RegisterView.vue'
+import ServicesView from '../views/ServicesView.vue'
+import AddView from '../views/GenerateAddView.vue'
+import BuildView from '../views/GenerateBuildView.vue'
+import PicsView from '../views/GeneratePicsView.vue'
+import ProfileView from '../views/ProfileView.vue'
+import ContactView from '../views/ContactView.vue'
+import PaymentView from '../views/PaymentView.vue'
 
 const router = createRouter({
   history: createWebHistory(),
   routes: [
     {
       path: '/',
-      component: Home,
+      name: 'home',
+      component: HomeView,
     },
     {
       path: '/login',
-      component: Login,
+      name: 'login',
+      component: LoginView,
     },
     {
       path: '/register',
-      component: Register,
-    },
-    {
-      path: '/:pathMatch(.*)*',
-      redirect: () => ({ path: '/' }),
+      name: 'register',
+      component: RegisterView,
     },
     {
       path: '/services',
-      component: Services,
-    },
-    {
-      path: '/contact',
-      component: Contact,
-    },
-    {
-      path: '/generate/build',
-      component: GenerateBuild,
+      name: 'services',
+      component: ServicesView,
     },
     {
       path: '/generate/add',
-      component: GenerateAdd,
+      name: 'add',
+      component: AddView,
+    },
+    {
+      path: '/generate/build',
+      name: 'build',
+      component: BuildView,
+    },
+    {
+      path: '/generate/pics',
+      name: 'pics',
+      component: PicsView,
+    },
+    {
+      path: '/profile',
+      name: 'profile',
+      component: ProfileView,
+    },
+    {
+      path: '/contact',
+      component: ContactView,
     },
     {
       path: '/payment',
-      component: Payment,
+      component: PaymentView,
     },
   ],
 })
