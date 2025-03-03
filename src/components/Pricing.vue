@@ -4,33 +4,40 @@ import { useRouter } from 'vue-router'
 
 const router = useRouter()
 
+// const plans = [
+//   {
+//     name: 'Базовый',
+//     price: 'Бесплатно',
+//     features: [
+//       'До 5 видео в месяц',
+//       'Базовое распознавание речи',
+//       'Стандартные стили субтитров',
+//       'Поддержка по email',
+//     ],
+//     buttonLabel: 'Начать бесплатно',
+//     buttonAction: () => router.push('/register'),
+//   },
+//   {
+//     name: 'Премиум',
+//     price: '999 ₽/мес',
+//     features: [
+//       'Неограниченное количество видео',
+//       'Улучшенное распознавание речи',
+//       'Расширенные стили субтитров',
+//       'Приоритетная поддержка',
+//       'Доступ к новым функциям',
+//     ],
+//     highlighted: true,
+//     buttonLabel: 'Выбрать план',
+//     buttonAction: () => router.push('/payment'),
+//   },
+// ]
+
 const plans = [
-  {
-    name: 'Базовый',
-    price: 'Бесплатно',
-    features: [
-      'До 5 видео в месяц',
-      'Базовое распознавание речи',
-      'Стандартные стили субтитров',
-      'Поддержка по email',
-    ],
-    buttonLabel: 'Начать бесплатно',
-    buttonAction: () => router.push('/register'),
-  },
-  {
-    name: 'Премиум',
-    price: '999 ₽/мес',
-    features: [
-      'Неограниченное количество видео',
-      'Улучшенное распознавание речи',
-      'Расширенные стили субтитров',
-      'Приоритетная поддержка',
-      'Доступ к новым функциям',
-    ],
-    highlighted: true,
-    buttonLabel: 'Выбрать план',
-    buttonAction: () => router.push('/payment'),
-  },
+  { name: 'Базовый', price: '299 ₽/мес', features: ['Доступ к основным функциям', 'Обработка до 10 видео в месяц', 'Стандартное качество'], buttonLabel: 'Быстрый старт', buttonAction: () => router.push('/payment') },
+  { name: 'Премиум', price: '499 ₽/мес', features: ['Все функции базового тарифа', 'Неограниченное количество видео', 'Высокое качество', 'Приоритетная поддержка'], buttonLabel: 'Новый горизонт', buttonAction: () => router.push('/payment'), highlighted: true },
+  { name: 'Корпоративный', price: '4 999 ₽/мес', features: ['Все функции премиум тарифа', 'До 10 пользователей', 'API доступ', 'Выделенный менеджер'], buttonLabel: 'На всех хватит', buttonAction: () => router.push('/payment') },
+
 ]
 </script>
 
@@ -38,7 +45,7 @@ const plans = [
   <div class="py-20">
     <div class="container mx-auto px-6">
       <h2 class="text-4xl font-bold text-center mb-16 text-white">Тарифы</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
         <div
           v-for="(plan, index) in plans"
           :key="index"

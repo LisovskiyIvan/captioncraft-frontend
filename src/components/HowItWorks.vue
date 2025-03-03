@@ -19,19 +19,17 @@ const steps = [
 </script>
 
 <template>
-  <div class=" py-20">
+  <div class="py-20">
     <div class="max-w-6xl mx-auto px-6">
-      <h2
-        class="text-4xl font-bold text-center mb-16 text-white"
-      >
-        Как это работает
-      </h2>
+      <h2 class="text-4xl font-bold text-center mb-16 text-white">Как это работает</h2>
 
       <!-- Десктопная версия -->
       <div class="hidden md:flex justify-between items-center mb-12 gap-8">
-        <div v-for="(step, index) in steps" :key="index" class="flex-1 relative border-2 border-gray-200 py-5 rounded-xl hover:scale-105 duration-300 transition-all hover:border-blue">
-
-
+        <div
+          v-for="(step, index) in steps"
+          :key="index"
+          class="flex-1 relative border-2 border-gray-200 py-5 rounded-xl hover:scale-105 duration-300 transition-all hover:border-blue"
+        >
           <!-- Шаг -->
           <div class="flex flex-col items-center text-center px-4">
             <div
@@ -57,7 +55,6 @@ const steps = [
           </div>
           <h3 class="text-xl font-semibold mb-4 text-white">{{ step.title }}</h3>
           <p class="text-gray-300">{{ step.description }}</p>
-
         </div>
       </div>
     </div>

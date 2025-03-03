@@ -10,8 +10,6 @@ import CTA from '../components/CTA.vue'
 import { onMounted } from 'vue'
 
 const { width } = useWindowSize()
-
-
 </script>
 
 <template>
@@ -23,19 +21,16 @@ const { width } = useWindowSize()
       </div>
     </section>
 
-      <HowItWorks />
+    <HowItWorks />
 
-      <Testimonials />
+    <Testimonials />
 
-      <Pricing />
+    <Pricing />
 
-      <FAQ />
+    <FAQ />
 
-      <CTA />
+    <CTA />
   </div>
 </template>
 
-<style scoped>
-
-
-</style>
+<style scoped></style>

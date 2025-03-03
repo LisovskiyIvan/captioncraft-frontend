@@ -4,9 +4,6 @@ import { useRouter } from 'vue-router'
 
 const router = useRouter()
 
-const navigateToRegister = () => {
-  router.push('/register')
-}
 </script>
 
 <template>
@@ -22,15 +19,9 @@ const navigateToRegister = () => {
         </p>
         <div class="flex flex-col sm:flex-row gap-6 justify-center">
           <Button
-            label="Начать бесплатно"
+            label="Начать"
             class="px-8 py-3 text-lg bg-blue text-black hover:scale-105 transition-all duration-300"
-            @click="navigateToRegister"
-          />
-          <Button
-            label="Узнать больше"
-            outlined
-            class="px-8 py-3 text-lg border-2 border-blue text-blue hover:bg-blue hover:text-black transition-all duration-300"
-            @click="() => router.push('/services')"
+            @click="() => router.push('/register')"
           />
         </div>
       </div>

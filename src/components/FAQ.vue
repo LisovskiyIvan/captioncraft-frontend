@@ -58,13 +58,11 @@ const questions = [
               ></i>
             </button>
             <div
-              v-show="activeIndex === index"
-              class="transition-all duration-500 ease-in-out"
+              class="transition-all duration-500 ease-in-out overflow-hidden"
               :style="{
                 maxHeight: activeIndex === index ? '500px' : '0',
                 opacity: activeIndex === index ? '1' : '0',
                 transform: activeIndex === index ? 'translateY(0)' : 'translateY(-20px)',
-                overflow: 'hidden'
               }"
             >
               <p class="text-black leading-relaxed bg-white/10 p-4 rounded-lg m-4">
