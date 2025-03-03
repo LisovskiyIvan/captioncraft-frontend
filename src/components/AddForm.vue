@@ -118,6 +118,7 @@ const createVideo = async () => {
 </script>
 
 <template>
+
   <Toast />
   <Card
     class="text-center py-8 bg-white text-black md:px-8 shadow-lg"
