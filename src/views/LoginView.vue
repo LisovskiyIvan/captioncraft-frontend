@@ -5,19 +5,16 @@ import router from "../router";
 import { Button } from "primevue";
 
 async function handleClick(email: string, password: string) {
-  const res = await fetch("http://localhost:8000/login", {
+  const res = await fetch("/api/login", {
     method: "POST",
     headers: {
-      "Content-Type": "application/json",
+      "Content-Type": "application/x-www-form-urlencoded",
     },
-    body: JSON.stringify({
-      email: email,
-      password: password,
-    }),
+    body: `email=${email}&password=${password}`,
   });
   if (res.ok) {
     const data = (await res.json()) as LoginResponse;
-    localStorage.setItem("token", data.token);
+    localStorage.setItem("token", data.access_token);
     router.push("/services");
   }
 }

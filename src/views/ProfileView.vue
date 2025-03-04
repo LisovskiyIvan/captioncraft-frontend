@@ -10,9 +10,14 @@ const router = useRouter()
 const toast = useToast()
 
 interface UserProfile {
+  id: number
   email: string
-  videos_count: number
-  is_premium: boolean
+  username: string
+  is_active: boolean
+  free_tier: boolean
+  created_at: string
+  videos_count?: number
+  is_premium?: boolean
 }
 
 const profile = ref<UserProfile | null>(null)
@@ -28,12 +33,46 @@ onMounted(async () => {
   try {
     const response = await fetch('/api/profile', {
       headers: {
-        Authorization: 'Bearer ' + token,
+        Authorization: `Bearer ${token}`,
       },
     })
 
     if (response.ok) {
       profile.value = await response.json()
+
+      if (profile.value) {
+        profile.value.is_premium = !profile.value.free_tier
+        profile.value.videos_count = 0
+      }
+
+    } else if (response.status === 401) {
+      console.log('Токен недействителен, пробуем получить профиль через POST запрос')
+      const tokenResponse = await fetch('/api/profile', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ token }),
+      })
+
+      if (tokenResponse.ok) {
+        profile.value = await tokenResponse.json()
+
+        if (profile.value) {
+          profile.value.is_premium = !profile.value.free_tier
+          profile.value.videos_count = 0
+        }
+
+      } else {
+        toast.add({
+          severity: 'error',
+          summary: 'Ошибка аутентификации',
+          detail: 'Ваша сессия истекла. Пожалуйста, войдите снова.',
+          life: 3000,
+        })
+        localStorage.removeItem('token')
+        router.push('/login')
+      }
     } else {
       toast.add({
         severity: 'error',
@@ -87,12 +126,13 @@ const logout = () => {
                 </div>
                 <div>
                   <h3 class="text-xl font-semibold text-gray-800">{{ profile.email }}</h3>
+                  <p class="text-sm text-gray-600">{{ profile.username }}</p>
                 </div>
               </div>
               <div class="border-t border-gray-200 pt-4">
                 <div class="grid grid-cols-2 gap-4">
                   <div class="text-center p-4 bg-gray-50 rounded-lg">
-                    <p class="text-2xl font-bold text-gray-800">{{ profile.videos_count }}</p>
+                    <p class="text-2xl font-bold text-gray-800">{{ profile.videos_count || 0 }}</p>
                     <p class="text-sm text-gray-600">Видео создано</p>
                   </div>
                   <div class="text-center p-4 bg-gray-50 rounded-lg">

@@ -4,8 +4,8 @@ import type { RegisterResponse } from '../model.ts'
 import router from '../router/index.ts'
 import { Button } from 'primevue'
 
-async function handleClick(email: string, password: string) {
-  const res = await fetch('http://localhost:8000/register', {
+async function handleClick(email: string, password: string, username?: string) {
+  const res = await fetch('/api/register', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -13,6 +13,7 @@ async function handleClick(email: string, password: string) {
     body: JSON.stringify({
       email: email,
       password: password,
+      username: username,
     }),
   })
   if (res.ok) {

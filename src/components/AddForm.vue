@@ -59,7 +59,7 @@ const createVideo = async () => {
   isLoading.value = true
 
   try {
-    const res = await fetch('http://localhost:8000/generate/video', {
+    const res = await fetch('/api/generate/video', {
       method: 'POST',
       headers: {
         Authorization: 'Bearer ' + token,
